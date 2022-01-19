@@ -1,6 +1,6 @@
 # K8 works with API versions to declare the resources 
 # We have to declare the apoVersion and the kind of service/component 
-# services: deployment, service, pods, replicasets, crobjob, autoscaling group, horizonantal pod scaling group (HAP)
+# services: deployment, service, pods, replicasets, cronjob, autoscaling group, horizonantal pod scaling group (HAP)
 
 apiVersion: apps/v1
 kind: Deployment 
@@ -22,4 +22,15 @@ spec:
       labels:
         app: nginx  # this label connects to the service or any other k8 components 
 
-        
+
+    # Let's define the container spec 
+
+    spec: 
+      containers:
+      - name: nginx
+        image: ahskhan/eng89automatednginx:latest  # docker image location
+        ports:
+        - containerPort: 80
+
+
+# create a kubernetes nginx-service.yml to create a k8 service 
